@@ -2,29 +2,20 @@ package ru.geekbrains.JavaCore2.lesson1;
 
 public class Course {
     String name; //имя соревнования
+    Obstacle[] course; // массив препятствий
 
-    public Course(String name) {
+    // конструктор полосы препятствий с именем и передачей ему массива препятствий переменной длины
+    public Course(String name, Obstacle...course) {
         this.name = name;
-        Course[] course = {new Cross(80), new Wall(2), new Wall(1), new Cross(120)};
+        this.course = course;
     }
-
+    // метод  полосы препятствий, которому передается команда участников
     public void doIt(Team team) {
-        for (Team t : team) {
-            for (Course c : this.course) {
-                c.doIt(t);
-                if (!t.isOnDistance()) break;
-        // TODO
-        //  не получается сделать циклы for each для перебора членов команды и препятствий;
+        for (Competitor t : team.teamMembers ) { // перебор по полученному методом doIt массиву участников team - бежит переменная t
+            for (Obstacle c : course) { // перебор по всем препятствиям класса cource - бежит переменная с
+                c.doIt(t); // методу doIt препятсвия с передается участник t
+                if (!t.isOnDistance()) break; // если у участника метод isOnDistance возвращает false, цикл прерывается
+            }
+        }
     }
-
-    //
-
-    /*
-Obstacle[] course = {new Cross(80), new Wall(2), new Wall(1), new Cross(120)};
-        for (Competitor c : competitors) {
-            for (Obstacle o : course) {
-                o.doIt(c);
-                if (!c.isOnDistance()) break;
- */
-
 }

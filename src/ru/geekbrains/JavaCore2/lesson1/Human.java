@@ -1,59 +1,61 @@
 package ru.geekbrains.JavaCore2.lesson1;
 
 public class Human implements Competitor {
+    String type;
     String name;
 
     int maxRunDistance;
     int maxJumpHeight;
     int maxSwimDistance;
 
-    boolean active;
+    boolean onDistance;
 
     @Override
     public boolean isOnDistance() {
-        return active;
+        return onDistance;
     }
 
     public Human(String name) {
+        this.type = "Гуманоид";
         this.name = name;
         this.maxRunDistance = 5000;
         this.maxJumpHeight = 30;
         this.maxSwimDistance = 200;
-        this.active = true;
+        this.onDistance = true;
     }
 
     @Override
     public void run(int dist) {
         if (dist <= maxRunDistance) {
-            System.out.println(name + " хорошо справился с кроссом");
+            System.out.println(type + " " + name + " хорошо справился с кроссом");
         } else {
-            System.out.println(name + " не справился с кроссом");
-            active = false;
+            System.out.println(type + " " + name + " не справился с кроссом");
+            onDistance = false;
         }
     }
 
     @Override
     public void jump(int height) {
         if (height <= maxJumpHeight) {
-            System.out.println(name + " удачно перепрыгнул через стену");
+            System.out.println(type + " " + name + " удачно перепрыгнул через стену");
         } else {
-            System.out.println(name + " не смог перепрыгнуть стену");
-            active = false;
+            System.out.println(type + " " + name + " не смог перепрыгнуть стену");
+            onDistance = false;
         }
     }
 
     @Override
     public void swim(int dist) {
         if (dist <= maxSwimDistance) {
-            System.out.println(name + " отлично проплыл");
+            System.out.println(type + " " + name + " отлично проплыл");
         } else {
-            System.out.println(name + " не смог проплыть");
-            active = false;
+            System.out.println(type + " " + name + " не смог проплыть");
+            onDistance = false;
         }
     }
 
     @Override
     public void info() {
-        System.out.println(name + " - " + active);
+        System.out.println(type + " " + name + " - " + onDistance);
     }
 }
