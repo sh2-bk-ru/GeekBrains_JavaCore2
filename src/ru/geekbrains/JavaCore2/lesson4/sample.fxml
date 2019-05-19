@@ -16,6 +16,6 @@
     <TextArea fx:id="textArea" editable="false" VBox.vgrow="ALWAYS" />
     <HBox>
         <TextField fx:id="textField" onAction="#sendMsg" promptText="Введите сообщение здесь" HBox.hgrow="ALWAYS" />
-        <Button fx:id="btn1" onAction="#sendMsg" text="==>>" />
+        <Button fx:id="btn1" onAction="#sendMsg" text="Отправить" />
     </HBox>
 </VBox>
