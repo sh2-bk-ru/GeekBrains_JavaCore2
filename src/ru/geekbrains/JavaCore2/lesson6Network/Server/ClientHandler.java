@@ -22,12 +22,20 @@ public class ClientHandler {
                 @Override
                 public void run() {
                     try {
+                        while (true){
+                            String str = in.readUTF();
+                            if(str.startsWith("/auth")){
+                                String[] tokens = str.split(" ")
+                            }
+
+                        }
+
                         while(true) {
                             String str = in.readUTF();
                             if(str.equals("/end")) {
                                 break;
                             }
-                            out.writeUTF("Client: " + str + " echo!");
+                            //out.writeUTF("Client: " + str + " echo!");
                             server.broadcastMsg("Client: " + str);
                         }
                     } catch (IOException e) {

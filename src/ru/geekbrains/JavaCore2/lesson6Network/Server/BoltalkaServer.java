@@ -1,5 +1,7 @@
 package ru.geekbrains.JavaCore2.lesson6Network.Server;
 
+import ru.geekbrains.JavaCore2.lesson6Network.AuthService.AuthService;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -18,6 +20,9 @@ public class BoltalkaServer {
         clients = new Vector<>();
 
         try {
+            AuthService.connect();
+
+            System.out.println(AuthService.getNickByLoginAndPass("log1", "pass1"));
             server = new ServerSocket(8189);
             System.out.println("Сервер Болталки запущен");
 
@@ -40,6 +45,7 @@ public class BoltalkaServer {
             } catch (IOException e){
                 e.printStackTrace();
             }
+            AuthService.disconnect();
         }
     }
 
